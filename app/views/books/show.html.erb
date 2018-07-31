@@ -1,0 +1,53 @@
+<div class= "container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h1>User info</h1>
+			<table class="table">
+				<tbody>
+					<tr></tr>
+					<tr>
+
+						<th>Name</th>
+						<% if user_signed_in? %>
+						<td><%= current_user.name %></td>
+						<% end %>
+					</tr>
+					<tr>
+						<th>introduction</th>
+					</tr>
+				</tbody>
+			</table>
+			<button class="col-xs-12 btn btn-default"><span class="glyphicon glyphicon-wrench"></span></button>
+
+			<h1>New Book</h1>
+			<%= form_for(@book) do |f| %>
+			<h4>Title</h4>
+			<%= f.text_field :title, class: "col-xs-12" %>
+			<h4>Opinion</h4>
+			<%= f.text_area :body, class: "col-xs-12" %>
+
+			<%= f.submit "Create Book", class: "col-xs-12 btn btn-primary dropdown-toggle" %>
+			<% end %>
+		</div>
+		<div class="col-lg-9">
+			<h1>Books</h1>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Title</th>
+						<th>Opinion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th></th>
+						<td><%= @book.title %></td>
+						<td><%= @book.body %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
