@@ -9,28 +9,29 @@
 
 						<th>Name</th>
 						<% if user_signed_in? %>
-						<td><%= current_user.name %></td>
+						<th><%= @user.name %></th>
 						<% end %>
 					</tr>
 					<tr>
 						<th>introduction</th>
+						<th><%= @user.introduction %></th>
 					</tr>
 				</tbody>
 			</table>
-			<button class="col-xs-12 btn btn-default"><span class="glyphicon glyphicon-wrench"></span></button>
+			<%= link_to "", user_path(current_user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{current_user.id}" %>
 
 			<h1>New Book</h1>
 			<%= form_for(@book) do |f| %>
 			<h4>Title</h4>
-			<%= f.text_field :title, class: "col-xs-12" %>
+			<%= f.text_field :title, class: "col-xs-12 book_title" %>
 			<h4>Opinion</h4>
-			<%= f.text_area :body, class: "col-xs-12" %>
+			<%= f.text_area :body, class: "col-xs-12 book_body" %>
 
 			<%= f.submit "Create Book", class: "col-xs-12 btn btn-primary dropdown-toggle" %>
 			<% end %>
 		</div>
 		<div class="col-lg-9">
-			<h1>Books</h1>
+			<h1>Book deteil</h1>
 			<table class="table table-hover table-inverse">
 				<thead>
 					<tr>
@@ -41,9 +42,13 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th></th>
-						<td><%= @book.title %></td>
-						<td><%= @book.body %></td>
+						<th><%= @user.name %></th>
+						<td><%= @books.title %></td>
+						<td><%= @books.body %></td>
+						<% if @books.user == current_user %>
+						<td><%= link_to "Edit", edit_book_path, class: "btn btn-success dropdown-toggle edit_book_#{@books.id}" %></td>
+						<td><%= link_to "Delete", { :controller => :books, :action => :destroy },method: :delete, class: "btn btn-danger dropdown-toggle destroy_book_#{@books.id}", "data-confirm" => "本当に削除しますか？" %></td>
+						<% end %>
 					</tr>
 				</tbody>
 			</table>

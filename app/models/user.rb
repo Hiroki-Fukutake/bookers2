@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :books
   attachment :image
+  validates :name, presence: true, length: {minimum: 2, maximum: 20 }
+  validates :email, presence: true
+  validates :introduction, length: {maximum: 50 }
 end

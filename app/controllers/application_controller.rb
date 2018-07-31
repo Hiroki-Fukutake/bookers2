@@ -9,10 +9,10 @@ protect_from_forgery with: :exception
     devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
   end
   def after_sign_up_path_for(resource)
-    new_book_path
+    user_path(current_user.id)
   end
   def after_sign_in_path_for(resource)
-    new_book_path
+    user_path(current_user.id)
   end
   def after_sign_out_path_for(resource)
     new_user_session_path
