@@ -4,11 +4,11 @@
 			<h1>User info</h1>
 			<%= form_for(@user) do |f| %>
 				<h4>name</h4>
-				<%= f.text_field :name, autofocus: true, class: "col-xs-12 name" %>
+				<%= f.text_field :name, autofocus: true, class: "col-xs-12 name", style: "border-radius:5px;" %>
 				<h4>Image</h4>
 				<%= f.attachment_field :image, class: "user_image" %>
 				<h4>introduction</h4>
-				<%= f.text_area :introduction, class: "introduction" %>
+				<%= f.text_area :introduction, class: "introduction", style: "border-radius:5px;" %>
 				<%= f.submit "Update User" %>
 			<% end %>
 		</div>

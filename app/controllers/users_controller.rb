@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-	def top
-	end
-	def home
-	end
 	def new
 		@book = Book.new
   		@books = Book.all
@@ -11,7 +7,6 @@ class UsersController < ApplicationController
 		@users = User.all
 		@user = User.find(current_user.id)
 		@book = Book.new
-
 	end
 	def create
 	  	book = Book.new(book_params)
@@ -26,7 +21,6 @@ class UsersController < ApplicationController
 		@user = User.find(current_user.id)
 		@user.update(user_params)
 		redirect_to user_path(current_user.id)
-
 	end
 	def show
 		@book = Book.new
